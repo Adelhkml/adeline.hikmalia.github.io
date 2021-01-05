@@ -128,22 +128,3 @@ table(actual = data.test$manufacturer, predicted = prediksi$class)
 #APER
 aper <- ((1)/(3+1+1))*100
 aper
-
-#contoh lain (buat pajangan aja)
-set.seed(1234)
-training_sample <- sample(c(TRUE,FALSE), nrow(diskriminan2), replace = T, prob = c(0.8,0.2))
-train <- diskriminan2[training_sample,]
-test <- diskriminan2[!training_sample,]
-lda.cereal <- lda(manufacturer ~ ., train)
-plot(lda.cereal, col = as.integer(train$manufacturer))
-
-lda.train <- predict(lda.cereal)
-train$lda <- lda.train$class
-table(train$lda,train$manufacturer)
-
-lda.test <- predict(lda.cereal,test)
-test$lda <- lda.test$class
-table(test$lda,test$manufacturer)
-#APER
-aper <- ((2+1)/(9+10+2))*100
-aper
